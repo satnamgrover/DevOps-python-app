@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('build code'){
             steps{
-                sh 'docker build -t devops-app .'
+                sh 'sudo docker build -t devops-app .'
             }
         }
         stage('tag and push image'){
             steps{
-                sh 'docker tag devops-app:latest $ECR_REPO:latest'
+                sh 'sudo docker tag devops-app:latest $ECR_REPO:latest'
                 sh '''
                 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
                 docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
