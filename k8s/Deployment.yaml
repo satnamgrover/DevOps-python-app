@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: python-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      name: python-pod
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: python-container
+          image: python-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+
