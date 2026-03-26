@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: python-container
-          image: 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
+          image: <ECR_URL>:latest
           ports:
             - containerPort: 5000
 
