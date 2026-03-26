@@ -20,7 +20,7 @@ pipeline {
                 sh 'sudo docker tag devops-app:latest $ECR_REPO:latest'
                 sh '''
                 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
-                docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
+                sudo docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
                 '''
                 }
             }
