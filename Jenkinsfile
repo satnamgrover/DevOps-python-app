@@ -1,16 +1,21 @@
 pipeline {
     agent any
     environment {
-        ECR_REPO = "101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app"
+        ECR_REPO = "<ECR_URL>/devops-app"
     }
     stages {
-        stage('build code'){
+        stage('clone code'){
+            steps {
+                git 'https://github.com/satnamgrover/DevOps-python-app.git'
+            }
+        }
+        stage('build and Tag Image'){
             steps{
                 sh 'sudo docker build -t devops-app .'
                 sh 'sudo docker tag devops-app:latest $ECR_REPO:latest'
             }
         }
-        stage('tag and push image'){
+        stage('push image to Registory'){
             steps{
                 withCredentials([
                     string(credentialsId: 'aws_temp_access_key', variable: 'AWS_ACCESS_KEY_ID'),
@@ -23,7 +28,7 @@ pipeline {
                 export DOCKER_CONFIG=$(pwd)/.docker
                 mkdir -p $DOCKER_CONFIG
                 aws sts get-caller-identity
-                aws ecr get-login-password --region ap-south-1 | docker --config $DOCKER_CONFIG login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
+                aws ecr get-login-password --region ap-south-1 | docker --config $DOCKER_CONFIG login --username AWS --password-stdin <ECR_URL>
                 sudo docker --config $DOCKER_CONFIG push $ECR_REPO:latest
                 '''
                 }
