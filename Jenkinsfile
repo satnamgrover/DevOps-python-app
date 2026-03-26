@@ -4,11 +4,6 @@ pipeline {
         ECR_REPO = "101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app"
     }
     stages {
-        stage('clone code'){
-            steps {
-                git 'https://github.com/satnamgrover/EKS-infrastructure-terraform.git'
-            }
-        }
         stage('build code'){
             steps{
                 sh 'docker build -t devops-app .'
