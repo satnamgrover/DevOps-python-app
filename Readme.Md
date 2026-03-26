@@ -1,37 +1,44 @@
-# Production-Grade DevOps Pipeline with Jenkins, Docker, and Amazon EKS
+# Production-Grade DevOps Project on AWS EKS
 
-## Overview
-This project demonstrates a **real-world, production-ready DevOps pipeline** covering CI/CD, containerization, cloud deployment, Kubernetes orchestration, and monitoring.  
+## Project Overview
+This project demonstrates a **production-ready DevOps workflow** for deploying containerized applications on **Amazon EKS**, showcasing **CI/CD, containerization, cloud deployment, Kubernetes orchestration, auto-scaling, and monitoring**.  
 
-Pipeline Workflow:
-
-
----
-
-## Features
-
-- CI/CD automation using Jenkins
-- Dockerized application deployment
-- Container registry using Amazon ECR
-- Kubernetes orchestration using Amazon EKS
-- LoadBalancer for public access
-- Auto-scaling of pods
-- Rolling updates for zero downtime
-- Monitoring using Prometheus + Grafana
-- Production best practices: health checks, IAM roles, logging
+It reflects real-world industry practices, highlighting skills sought by top tech companies.
 
 ---
 
-## Tech Stack
+## Key Features
 
-- Jenkins – CI/CD automation
-- Docker – Containerization
-- Amazon ECR – Container registry
-- Amazon EKS – Managed Kubernetes cluster
-- kubectl – Kubernetes CLI
-- eksctl – EKS cluster management
-- Prometheus & Grafana – Monitoring & visualization
-- Python Flask – Sample web application
+- **Containerized Deployment**: Dockerized application deployed on Kubernetes.  
+- **Cloud Native Architecture**: AWS EKS cluster with secure access and load balancing.  
+- **High Availability**: Auto-scaling and rolling updates for zero downtime.  
+- **Monitoring & Observability**: Prometheus + Grafana for metrics, dashboards, and alerts.  
+- **Production Best Practices**: Health checks, IAM roles with least privilege, structured logging.  
 
+---
+
+## Technology Stack
+
+| Layer | Tool / Service |
+|-------|----------------|
+| CI/CD & Automation | Jenkins, GitHub Actions (optional) |
+| Containerization | Docker |
+| Container Registry | Amazon ECR |
+| Orchestration | Amazon EKS, kubectl, eksctl |
+| Monitoring & Logging | Prometheus, Grafana |
+| Application | Python Flask (demo) |
+
+---
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Developer Commit] --> B[Version Control: GitHub]
+    B --> C[Docker Build & Push]
+    C --> D[Amazon ECR]
+    D --> E[Amazon EKS Deployment]
+    E --> F[LoadBalancer & Service]
+    E --> G[Prometheus + Grafana Monitoring]
 
 
