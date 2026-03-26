@@ -19,6 +19,7 @@ pipeline {
                 ])
                 {
                 sh '''
+                aws sts get-caller-identity
                 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
                 sudo docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
                 '''
