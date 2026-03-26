@@ -1,7 +1,14 @@
 # Production-Grade DevOps Project on AWS EKS
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![EKS Status](https://img.shields.io/badge/EKS-production-blue)
+![Docker Version](https://img.shields.io/badge/Docker-24.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+---
+
 ## Project Overview
-This project demonstrates a **production-ready DevOps workflow** for deploying containerized applications on **Amazon EKS**, showcasing **CI/CD, containerization, cloud deployment, Kubernetes orchestration, auto-scaling, and monitoring**.  
+This project demonstrates a **production-ready DevOps workflow** for deploying containerized applications on **Amazon EKS**, showcasing **cloud-native deployment, containerization, monitoring, and automation**.  
 
 It reflects real-world industry practices, highlighting skills sought by top tech companies.
 
@@ -12,7 +19,7 @@ It reflects real-world industry practices, highlighting skills sought by top tec
 - **Containerized Deployment**: Dockerized application deployed on Kubernetes.  
 - **Cloud Native Architecture**: AWS EKS cluster with secure access and load balancing.  
 - **High Availability**: Auto-scaling and rolling updates for zero downtime.  
-- **Monitoring & Observability**: Prometheus + Grafana for metrics, dashboards, and alerts.  
+- **Monitoring & Observability**: Prometheus + Grafana dashboards and alerts.  
 - **Production Best Practices**: Health checks, IAM roles with least privilege, structured logging.  
 
 ---
@@ -21,24 +28,23 @@ It reflects real-world industry practices, highlighting skills sought by top tec
 
 | Layer | Tool / Service |
 |-------|----------------|
-| CI/CD & Automation | Jenkins, GitHub Actions (optional) |
 | Containerization | Docker |
 | Container Registry | Amazon ECR |
 | Orchestration | Amazon EKS, kubectl, eksctl |
 | Monitoring & Logging | Prometheus, Grafana |
 | Application | Python Flask (demo) |
+| Automation | Jenkins / GitHub Actions (optional) |
+| Cloud Management | AWS CLI |
 
 ---
 
 ## Architecture
 
-```mermaid
+```mermaid id="7kmf8l"
 flowchart LR
-    A[Developer Commit] --> B[Version Control: GitHub]
+    A[Developer Commit] --> B[GitHub]
     B --> C[Docker Build & Push]
     C --> D[Amazon ECR]
     D --> E[Amazon EKS Deployment]
     E --> F[LoadBalancer & Service]
     E --> G[Prometheus + Grafana Monitoring]
-
-
