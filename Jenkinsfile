@@ -7,6 +7,7 @@ pipeline {
         stage('build code'){
             steps{
                 sh 'sudo docker build -t devops-app .'
+                sh 'sudo docker tag devops-app:latest $ECR_REPO:latest'
             }
         }
         stage('tag and push image'){
@@ -17,7 +18,6 @@ pipeline {
                     string(credentialsId: 'aws_temp_session_token', variable: 'AWS_SESSION_TOKEN')
                 ])
                 {
-                sh 'sudo docker tag devops-app:latest $ECR_REPO:latest'
                 sh '''
                 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
                 sudo docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
