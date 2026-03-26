@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: python-app-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: python
   ports:

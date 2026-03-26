@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: python-app-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: python
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: python-container
-          image: satnam45/python-app
+          image: 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
           ports:
             - containerPort: 5000
 

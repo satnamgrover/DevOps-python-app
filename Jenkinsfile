@@ -1,40 +1,33 @@
 pipeline {
     agent any
-    
+    environment {
+        ECR_REPO = "101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app"
+    }
     stages {
-        stage('prepare variables')
-        {
+        stage('clone code'){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'Docker_User', passwordVariable: 'Docker_Pass')])
-                {
-                    script {
-                        env.DOCKER_IMAGE = "${Docker_User}/python-app"
-                    }
-                }
+                git 'https://github.com/satnamgrover/EKS-infrastructure-terraform.git'
             }
         }
-        stage('build docker image'){
-            steps {
-                sh "docker build -t $DOCKER_IMAGE ."
-            }
-        }
-        stage('push image to docker hub'){
+        stage('build code'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'Docker_user', passwordVariable: 'Docker_Pass')])
-                {
-                    sh '''
-                    echo $Docker_Pass | docker login -u $Docker_user --password-stdin
-                    docker push $DOCKER_IMAGE
-                    '''
-                }
+                sh 'docker build -t devops-app .'
             }
         }
-        stage('deploy using kubernetes'){
+        stage('tag and push image'){
             steps{
-                sh "kubectl apply -f k8s/Deployment.yaml"
-                sh "kubectl apply -f k8s/service.yaml"
+                sh 'docker tag devops-app:latest $ECR_REPO:latest'
+                sh '''
+                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 101992521948.dkr.ecr.ap-south-1.amazonaws.com
+                docker push 101992521948.dkr.ecr.ap-south-1.amazonaws.com/devops-app:latest
+                '''
             }
         }
-        
+        stage('Deploy code'){
+            steps{
+                sh 'kubectl apply -f k8s/Deployment.yaml'
+                sh 'kubectl apply -f k8s/service.yaml'
+            }
+        }
     }
 }
