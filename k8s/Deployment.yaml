@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
         - name: python-container
-          image: python-app
-          imagePullPolicy: Never
+          image: satnam45/python-app
           ports:
             - containerPort: 5000
 
