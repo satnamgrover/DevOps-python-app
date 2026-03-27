@@ -50,6 +50,8 @@ flowchart LR
     E --> G[Prometheus + Grafana Monitoring]
 
 
+
+---
 ## Screenshots / Demo
 
 **Application Running on EKS**  
