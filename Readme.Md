@@ -51,7 +51,7 @@ flowchart LR
 
 
 
----
+```
 ## Screenshots / Demo
 
 **Application Running on EKS**  
