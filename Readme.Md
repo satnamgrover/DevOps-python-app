@@ -57,7 +57,7 @@ flowchart LR
 **Application Running on EKS**  
 ![App Screenshot](screenshots/app_home.png)
 ![App Add User Screenshot](screenshots/app_user_add.png)
-![App User List Screenshot](screenshots/app_user_list.png
+![App User List Screenshot](screenshots/app_user_list.png)
 
 **Grafana Monitoring Dashboard**  
 ![Grafana Dashboard](screenshots/grafana_dashboard.png)
