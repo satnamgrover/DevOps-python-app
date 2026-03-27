@@ -48,3 +48,14 @@ flowchart LR
     D --> E[Amazon EKS Deployment]
     E --> F[LoadBalancer & Service]
     E --> G[Prometheus + Grafana Monitoring]
+
+
+## Screenshots / Demo
+
+**Application Running on EKS**  
+![App Screenshot](screenshots/app_home.png)
+![App Add User Screenshot](screenshots/app_user_add.png)
+![App User List Screenshot](screenshots/app_user_list.png
+
+**Grafana Monitoring Dashboard**  
+![Grafana Dashboard](screenshots/grafana_dashboard.png)
